@@ -1,0 +1,34 @@
+def createMD5(hashValue):
+  import hashlib
+  # convert to unicode (binary)
+  binaryValue = hashValue.encode("utf-8")
+
+  # create a binary hash of the binaryValue
+  hashValue = hashlib.md5(binaryValue)
+
+  # convert binary hash to hex
+  hexHashValue = hashValue.hexdigest()
+
+  # return the hashed value
+  return hexHashValue
+
+
+hashTable = {}
+def addUserToTable(user,password):
+
+  # Hashing the given password
+  hashedPassword = createMD5(password)
+
+  # Adding the user and teh hashed password to a table
+  hashTable[hashedPassword] = user
+
+  print (hashTable)
+
+
+addUser = True
+while addUser == True:
+  user = input("Please enter your name")
+  password = input("Enter your password")
+  addUserToTable(user, password)
+
+
